@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import orderRoutes from "./routes/orderRoutes.js";
 
 // Import routes
 import userRoutes from "./routes/userRoutes.js";
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes); // ✅ add product routes
-
+app.use("/api/orders", orderRoutes);
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
