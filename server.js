@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import orderRoutes from "./routes/orderRoutes.js";
-
+import adminRoutes from "./routes/adminRoutes.js";
 // Import routes
 import userRoutes from "./routes/userRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
@@ -26,6 +26,9 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes); // ✅ add product routes
 app.use("/api/orders", orderRoutes);
+
+
+app.use("/api/admin", adminRoutes); // Admin routes
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
