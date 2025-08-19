@@ -4,13 +4,9 @@ import { getAllUsers, deleteUser, updateUser } from "../controllers/adminControl
 
 const router = express.Router();
 
-// Get all users
+// Admin-only routes
 router.get("/users", protect, admin, getAllUsers);
-
-// Delete a user
 router.delete("/users/:id", protect, admin, deleteUser);
-
-// Update a user
 router.put("/users/:id", protect, admin, updateUser);
 
 export default router;
