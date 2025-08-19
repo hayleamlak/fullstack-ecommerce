@@ -1,4 +1,5 @@
 import User from "../models/user.js";
+import Order from "../models/orderModel.js"; // make sure you have an order model
 
 // @desc    Get all users
 // @route   GET /api/admin/users
@@ -47,6 +48,21 @@ export const updateUser = async (req, res) => {
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
     });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+// @desc    Get all orders
+// @route   GET /api/admin/orders
+// @access  Private/Admin
+export const getAllOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({})
+      .populate("user", "name email") // shows who placed the order
+      .populate("orderItems.product", "name price"); // shows product info
+
+    res.json(orders);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }

@@ -7,7 +7,7 @@ import adminRoutes from "./routes/adminRoutes.js";
 // Import routes
 import userRoutes from "./routes/userRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
-
+import adminProductRoutes from "./routes/adminProductRoutes.js";
 dotenv.config(); // Load .env variables
  // Load .env variables
 
@@ -29,6 +29,10 @@ app.use("/api/orders", orderRoutes);
 
 
 app.use("/api/admin", adminRoutes); // Admin routes
+app.use("/api/admin/products", adminProductRoutes);
+
+
+
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
