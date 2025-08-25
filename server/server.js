@@ -8,6 +8,9 @@ import adminRoutes from "./routes/adminRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import adminProductRoutes from "./routes/adminProductRoutes.js";
+
+import paymentRoutes from "./routes/paymentRoutes.js";
+
 dotenv.config(); // Load .env variables
  // Load .env variables
 
@@ -26,6 +29,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes); // ✅ add product routes
 app.use("/api/orders", orderRoutes);
+app.use("/api/payment", paymentRoutes);
 
 
 app.use("/api/admin", adminRoutes); // Admin routes

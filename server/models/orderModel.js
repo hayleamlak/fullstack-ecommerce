@@ -34,6 +34,13 @@ const orderSchema = new mongoose.Schema(
     totalPrice: { type: Number, required: true, default: 0.0 },
     isPaid: { type: Boolean, required: true, default: false },
     paidAt: { type: Date },
+    paymentResult: {
+      id: String,           // Transaction ID from Chapa/Telebirr
+      status: String,       // Payment status: 'success', 'failed', etc.
+      update_time: String,  // Timestamp from provider
+      email_address: String, // Payer email (if available)
+      method: String,       // Payment method: 'Chapa' or 'Telebirr'
+    },
     isDelivered: { type: Boolean, required: true, default: false },
     deliveredAt: { type: Date },
   },
